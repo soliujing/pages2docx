@@ -1,6 +1,6 @@
 -- This script recursively traverses a directory and converts all .pages documents to .docx documents
 -- Tested on Mac OS Sierra
--- Command line usage: osascript pages2docx.applescript ~/Documents/
+-- Command line usage: osascript xx.applescript ~/Documents/
 on run inputFolder
 	
 	tell application "Finder" to set theFiles to every file in the entire contents of folder inputFolder
@@ -27,14 +27,8 @@ on convert(dirName, fileName, appName, exportFormat, exportExtension)
 		set fullPath to (dirName & fileName)
 		set doc to open fullPath
 		set docName to name of doc
-		set exportFileName to (dirName & docName & "." & exportExtension) as text
+		set exportFileName to (dirName & docName & "" & exportExtension) as text
 		close access (open for access exportFileName)
-		
-		-- if appName is "numbers" then
-		--	tell application "Numbers"
-		--		export doc to file exportFileName as exportFormat
-		--	end tell
-		-- end if
 		
 		if appName is "Pages" then
 			tell application "Pages"
