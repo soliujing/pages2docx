@@ -13,7 +13,7 @@ on run inputFolder
 		
 		if fExt is "pages" then
 			using terms from application "Pages"
-				convert(fDir, fName, "Pages", Microsoft Word, ".docx")
+				convert(fDir, fName, "Pages", Microsoft Word, "docx")
 			end using terms from
 		end if
 		
@@ -27,7 +27,7 @@ on convert(dirName, fileName, appName, exportFormat, exportExtension)
 		set fullPath to (dirName & fileName)
 		set doc to open fullPath
 		set docName to name of doc
-		set exportFileName to (dirName & docName & "" & exportExtension) as text
+		set exportFileName to (dirName & docName & "." & exportExtension) as text
 		close access (open for access exportFileName)
 		
 		if appName is "Pages" then
